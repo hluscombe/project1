@@ -1,0 +1,23 @@
+<h1><%= @synth.name %></h1>
+
+<%= image_tag @synth.image, :alt => @synth.name, :class => 'feature' %>
+
+<ul>
+  <li>
+    Name: <%= link_to @synth.name, synth_path(synth.id) %>
+
+  </li>
+  <li>
+    Voice Count: <%= @synth.voices %>
+  </li>
+
+</ul>
+
+<%# <% @synth.bands.each do |band| %> %>
+  <%# <%= link_to image_tag(band.image, :class => 'thumb'), synth %> %>
+<%# <% end %> %>
+
+<div class="controls">
+  <%= link_to "Edit Synth", edit_synth_path(@synth) %>
+  <%= link_to "Delete Synth", synth_path(@synth), :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
+</div>

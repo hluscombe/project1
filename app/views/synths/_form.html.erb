@@ -1,0 +1,9 @@
+<%= form_for @synth do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, :autofocus => true, :required => true %>
+  <%= f.label :voices, "Voice Count" %>
+  <%= f.number_field :voices %>
+  <%= f.label :image, "Photo" %>
+  <%= f.url_field :image %>
+  <%= f.submit %>
+<% end %>

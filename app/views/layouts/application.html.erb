@@ -8,8 +8,26 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <%= link_to 'Home', root_path %>
+    <%= link_to 'All Designers', designers_path %>
+    <%= link_to 'Add New Designer', new_designer_path %>
+    |
+    <%= link_to 'All Synths', synths_path %>
+    <%= link_to 'Add New Synths', new_synth_path %>
+    |
+    <%= link_to 'All Bands', bands_path %>
+    <%= link_to 'Add New Bands', new_band_path %>
+    <% if @current_user.present? %>
+      <% if @current_user.admin? %>
+        <%= link_to "All users", users_path %>
+      <% end %>
+      <%= link_to "Sign Out #{ @current_user.email }", login_path, :method => 'delete' %>
+      <% else %>
+        <%= link_to 'Sign Up', new_user_path %>
+        <%= link_to 'Sign In', login_path %>
+    <% end %>
     <%= yield %>
   </body>
+
 </html>

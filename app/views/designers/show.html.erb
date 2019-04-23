@@ -1,0 +1,26 @@
+<h1><%= @designer.name %></h1>
+
+<%= image_tag @designer.image, :alt => @designer.name, :class => 'feature' %>
+
+<ul>
+  <li>
+    <%# Name: <%= link_to @designer.name, designer_path(designer.id) %> %>
+    Name: <%= @designer.name %>
+  </li>
+  <li>
+    Date of Birth: <%= @designer.dob %>
+  </li>
+  <li>
+    Works at: <%= @designer.company %>
+  </li>
+
+</ul>
+
+<%# <% @designer.synths.each do |synth| %> %>
+  <%# <%= link_to image_tag(synth.image, :class => 'thumb'), synth %> %>
+<%# <% end %> %>
+
+<div class="controls">
+  <%= link_to "Edit Designer", edit_designer_path(@designer) %>
+  <%= link_to "Delete Designer", designer_path(@designer), :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
+</div>

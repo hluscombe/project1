@@ -1,0 +1,25 @@
+<h1><%= @band.name %></h1>
+
+<%= image_tag @band.image, :alt => @band.name, :class => 'feature' %>
+
+<ul>
+  <li>
+    Name: <%= link_to @band.name, band_path(band.id) %>
+  </li>
+  <li>
+    Year Formed: <%= @band.year_formed %>
+  </li>
+  <li>
+    Albums available on discogs: <%=  %>
+  </li>
+
+</ul>
+
+<%# <% @band.synths.each do |synth| %> %>
+  <%# <%= link_to image_tag(synth.image, :class => 'thumb'), synth %> %>
+<%# <% end %> %>
+
+<div class="controls">
+  <%= link_to "Edit Band", edit_band_path(@band) %>
+  <%= link_to "Delete Band", band_path(@band), :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
+</div>

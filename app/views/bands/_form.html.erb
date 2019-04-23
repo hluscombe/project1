@@ -1,0 +1,9 @@
+<%= form_for @band do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, :autofocus => true, :required => true %>
+  <%= f.label :year_formed, "Year Formed" %>
+  <%= f.text_field :year_formed %>
+  <%= f.label :image, "Band Photo" %>
+  <%= f.url_field :image %>
+  <%= f.submit %>
+<% end %>
