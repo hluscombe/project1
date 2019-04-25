@@ -1,46 +1,67 @@
-<h1><%= @band.name %></h1>
-
-<%= image_tag @band.image, :alt => @band.name, :class => 'rounded mx-auto d-block' %>
-
-<ul>
-  <li>
-    <h4>Name:</h4> <%= link_to @band.name, band_path(@band.id) %>
-  </li>
-  <li>
-    <h4>Year Formed:</h4> <%= @band.year_formed %>
-  </li>
-  <li>
-    <h4>Top Tracks:</h4>
-    <% @artist.top_tracks(:AU).each do |track| %>
-    <ol><%= track.name %></ol>
-    <% end %>
-  </li>
-  <li>
-    <h4>Albums available on Spotify:</h4>
-    <% @artist.albums(album_type: 'album').each do |album| %>
-    <p><%= album.name %></p>
-    <ol>
-      Released: <%= album.release_date %>
-    </ol>
-    <% end %>
-  </li>
-  <li>
-    <h4>Genres:</h4>
-    <% @artist.genres.each do |genre| %>
-    <ol><%= genre.capitalize %></ol>
-    <% end %>
-  </li>
-  <li>
-    <h4>Synths Used</h4>
-    <% @band.synths.each do |synth| %>
-    <%= synth.name %>
-    <%= link_to image_tag(synth.image, :class => 'img-thumbnail'), synth %>
-    <% end %>
-  </li>
-</ul>
+<div class="col-8">
 
 
-<div class="controls">
-  <%= link_to "Edit Band", edit_band_path(@band) %>
-  <%= link_to "Delete Band", band_path(@band), :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
+  <h1><%= @band.name %></h1>
+
+  <%= image_tag @band.image, :alt => @band.name, :class => 'rounded mx-auto d-block img-thumbnail img-responsive' %>
+
+  <ul>
+
+    <li>
+      <h4>Name:</h4> <%= link_to @band.name, band_path(@band.id) %>
+    </li>
+
+    <li>
+      <h4>Year Formed:</h4> <%= @band.year_formed %>
+    </li>
+
+    <li>
+      <h4>Top Tracks:</h4>
+      <% @artist.top_tracks(:AU).each do |track| %>
+      <ol><%= track.name %></ol>
+      <% end %>
+    </li>
+
+
+
+    <li>
+      <h4>Albums available on Spotify:</h4>
+      <% @artist.albums(album_type: 'album', market: 'US').each do |album| %>
+      <p><%= album.name %></p>
+      <ol>
+        Released: <%= album.release_date %>
+      </ol>
+      <% end %>
+    </li>
+
+
+
+    <li>
+      <h4>Genres:</h4>
+      <% @artist.genres.each do |genre| %>
+      <ol><%= genre.capitalize %></ol>
+      <% end %>
+    </li>
+
+    <div class="col-10">
+      <li>
+        <h4>Synths Used</h4>
+        <ol>
+
+          <% @band.synths.each do |synth| %>
+          <%= synth.name %>
+
+          <%= link_to image_tag(synth.image, :class => 'img-thumbnail img-fluid'), synth %>
+          <% end %>
+        </ol>
+      </li>
+    </div>
+
+  </ul>
+
+
+  <div class="controls">
+    <%= link_to "Edit Band", edit_band_path(@band) %>
+    <%= link_to "Delete Band", band_path(@band), :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
+  </div>
 </div>

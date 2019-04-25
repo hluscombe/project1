@@ -1,18 +1,25 @@
-<h1>Designers</h1>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Designers</h1>
+    <%= link_to 'Add New Designer', new_designer_path, :class => "btn btn-primary" %>
+    <br>
+    <br>
+    <% @designers.order(:name).each do |designer| %>
+    <%= image_tag designer.image, :class => 'img-thumbnail img-responsive' %>
+    <ul>
+      <br>
+      <li>
+        Name: <%= link_to designer.name, designer_path(designer.id) %>
+      </li>
+      <li>
+        Date of Birth: <%= designer.dob %>
+      </li>
+      <li>
+        Works at: <%= designer.company %>
+      </li>
+    </ul>
+    <br>
+    <% end %>
+  </div>
 
-<% @designers.each do |designer| %>
-  <%= image_tag designer.image, :class => 'img-thumbnail' %>
-
-  <ul>
-    <li>
-      Name: <%= link_to designer.name, designer_path(designer.id) %>
-    </li>
-    <li>
-      Date of Birth: <%= designer.dob %>
-    </li>
-    <li>
-      Works at: <%= designer.company %>
-    </li>
-
-  </ul>
-<% end %>
+</div>

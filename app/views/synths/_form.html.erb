@@ -1,28 +1,34 @@
 <%= form_for @synth do |f| %>
 
   <div class="form-group">
-  <%= f.label :name %>
-  <%= f.text_field :name, :autofocus => true, :required => true, :class => 'form-control' %>
+    <%= f.label :name %>
+    <%= f.text_field :name, :autofocus => true, :required => true, :class => 'form-control col-6' %>
   </div>
 
   <div class="form-group">
-  <%= f.label :voices, "Voice Count" %>
-  <%= f.number_field :voices, :class => 'form-control'  %>
+    <%= f.label :voices, "Voice Count" %>
+    <%= f.number_field :voices, :class => 'form-control col-6'  %>
   </div>
 
   <div class="form-group">
-  <%= f.label :image, "Photo" %>
-  <%= f.url_field :image, :class => 'form-control', :placeholder => 'Paste an image URL' %>
+    <%= f.label :image, "Photo" %>
+    <%= f.url_field :image, :class => 'form-control col-6', :placeholder => 'Paste an image URL' %>
   </div>
 
   <div class="form-group">
-  <%= f.label :designer_id, "Synth Designer" %>
-  <%= f.select :designer_id, Designer.pluck(:name, :id), :include_blank => true, :class => 'form-control'  %>
+    <%= f.label :designer_id, "Synth Designer" %>
+    <%= f.select :designer_id, Designer.pluck(:name, :id), :include_blank => true, :required => true, :class => 'form-control col-6'  %>
   </div>
 
   <div class="form-group">
-  <%= f.label :band_ids, "Select a band that has used this synth" %>
-  <%= f.select :band_ids, Band.pluck(:name, :id), :include_blank => true %>
+    <%= f.label :band_ids, "Select a band that has used this synth" %>
+    <br>
+    <%= hidden_field_tag "synth[band_ids][]", nil %>
+    <% Band.order(:name).each do |band| %>
+      <%= check_box_tag "synth[band_ids][]", band.id,
+      @synth.band_ids.include?(band.id), :id => dom_id(band)%>
+      <%= label_tag dom_id(band), band.name %><br>
+    <% end %>
   </div>
 
   <%= f.submit "Submit", :class => 'btn btn-primary' %>

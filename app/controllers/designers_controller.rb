@@ -34,7 +34,7 @@ class DesignersController < ApplicationController
 
   private
   def designer_params
-    params.require(:designer).permit(:name, :dob, :company, :image)
+    params.require(:designer).permit(:name, :dob, :company, :image, :user_id)
   end
 
 end

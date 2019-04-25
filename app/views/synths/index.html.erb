@@ -1,12 +1,24 @@
-<h1>Synthesisers</h1>
+<div class="row">
 
-<% @synths.each do |synth| %>
-  <%= image_tag synth.image, :class => 'img-thumbnail' %>
+  <div class="col-md-6 col-md-offset-4">
+    <h1>Synthesisers</h1>
 
-  <ul>
-    <li>
-      Name: <%= link_to synth.name, synth_path(synth.id) %>
-    </li>
+    <%= link_to 'Add New Synthesiser', new_synth_path, :class => "btn btn-primary" %>
+    <br>
+    <br>
+    <% @synths.order(:name).each do |synth| %>
 
-  </ul>
-<% end %>
+      <%= image_tag synth.image, :class => 'img-thumbnail img-responsive' %>
+
+    <br>
+    <ul>
+      <li>
+        Name: <%= link_to synth.name, synth_path(synth.id) %>
+      </li>
+    </ul>
+    <br>
+    <% end %>
+
+  </div>
+
+</div>

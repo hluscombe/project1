@@ -1,9 +1,20 @@
 
-<% if @current_user.present? %>
-  <h2>Welcome back <%= @current_user.email %></h2>
-<% else %>
+<div class="col-6">
+  <% if @current_user.present? %>
+  <h2>Welcome back, <%= @current_user.email %>! </h2>
+
+  <%= image_tag @designer.image, :alt => @designer.name, :class => 'img-thumbnail img-fluid' %>
+  <br>
+  <br>
+  <%= link_to "Go To Your Profile", designer_path(@designer), :class => 'btn btn-primary' %>
+
+  <%= link_to "Edit Your Profile", edit_designer_path(@designer), :class => 'btn btn-primary' %>
+
+  <% else %>
   <%= render :partial => 'form' %>
   <br>
   Already have an account?
   <%= link_to 'Sign in here', login_path %>
-<% end %>
+  <% end %>
+</div>
+<br>

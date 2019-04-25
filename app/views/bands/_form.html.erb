@@ -2,23 +2,29 @@
 
   <div class="form-group">
   <%= f.label :name %>
-  <%= f.text_field :name, :autofocus => true, :required => true, :class => 'form-control' %>
+  <%= f.text_field :name, :autofocus => true, :required => true, :class => 'form-control col-6' %>
   </div>
 
   <div class="form-group">
   <%= f.label :year_formed, "Year Formed" %>
-  <%= f.text_field :year_formed, :class => 'form-control' %>
+  <%= f.text_field :year_formed, :class => 'form-control col-6' %>
   </div>
 
   <div class="form-group">
   <%= f.label :image, "Band Photo" %>
-  <%= f.url_field :image, :class => 'form-control' %>
+  <%= f.url_field :image, :class => 'form-control col-6' %>
   </div>
 
   <div class="form-group">
-  <%= f.label :synth_ids, "Synth Used" %>
-  <%= f.select :synth_ids, Synth.pluck(:name, :id), :include_blank => true %>
+    <%= f.label :band_ids, "Select any synths that this band has used" %>
+    <br>
+    <%= hidden_field_tag "band[synth_ids][]", nil %>
+    <% Synth.order(:name).each do |synth| %>
+      <%= check_box_tag "band[synth_ids][]", synth.id,
+      @band.synth_ids.include?(synth.id), :id => dom_id(synth)%>
+      <%= label_tag dom_id(synth), synth.name %><br>
+    <% end %>
   </div>
 
-  <%= f.submit %>
+  <%= f.submit "Submit", :class => 'btn btn-primary' %>
 <% end %>

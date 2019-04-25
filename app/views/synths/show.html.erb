@@ -1,29 +1,36 @@
-<h1><%= @synth.name %></h1>
+<div class="col-8">
+  <h1><%= @synth.name %></h1>
 
-<%= image_tag @synth.image, :alt => @synth.name, :class => 'feature' %>
+  <%= image_tag @synth.image, :alt => @synth.name, :class => 'feature' %>
 
-<ul>
-  <li>
-    Name: <%= link_to @synth.name, synth_path(@synth.id) %>
+  <ul>
+    <li>
+      Name: <%= link_to @synth.name, synth_path(@synth.id) %>
 
-  </li>
-  <li>
-    Manufacturer: <%= @designer.company %>
-  </li>
-  <li>
-    Designed by: <%= @designer.name %>
-  </li>
-  <li>
-    Voice Count: <%= @synth.voices %>
-  </li>
+    </li>
+    <% if @designer.present? %>
+    <li>
+      Manufacturer: <%= @designer.company %>
+    </li>
+    <li>
+      Designed by: <%= link_to @designer.name, designer_path(@designer) %>
+    </li>
+    <% end %>
+    <li>
+      Voice Count: <%= @synth.voices %>
+    </li>
 
-</ul>
+  </ul>
 
-<% @synth.bands.each do |band| %>
-  <%= link_to image_tag(band.image, :class => 'img-thumbnail'), band %>
-<% end %>
+  <ol>
+    <% @synth.bands.each do |band| %>
+    <%= link_to image_tag(band.image, :class => 'img-thumbnail img-responsive'), band %>
+    <% end %>
+  <ol>
 
-<div class="controls">
-  <%= link_to "Edit Synth", edit_synth_path(@synth) %>
-  <%= link_to "Delete Synth", synth_path(@synth), :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
+      <div class="controls">
+        <%= link_to "Edit Synth", edit_synth_path(@synth) %>
+        <%= link_to "Delete Synth", synth_path(@synth), :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
+      </div>
+
 </div>

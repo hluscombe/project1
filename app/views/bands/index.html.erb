@@ -1,10 +1,15 @@
-<h1>Bands</h1>
+<div class="row">
 
-<div class="container">
-  <% @bands.each do |band| %>
-    <%= image_tag band.image, :class => 'img-thumbnail', :class => "rounded mx-auto d-block" %>
+  <div class="col-md-6 col-md-offset-3">
+    <h1>Bands</h1>
+    <%= link_to 'Add New Band', new_band_path, :class => "btn btn-primary" %>
+    <br>
+    <br>
+    <% @bands.order(:name).each do |band| %>
+    <%= image_tag band.image, :class => 'img-thumbnail img-responsive' %>
 
     <ul>
+      <br>
       <li>
         Name: <%= link_to band.name, band_path(band.id) %>
       </li>
@@ -12,5 +17,8 @@
         Year Formed: <%= band.year_formed %>
       </li>
     </ul>
-  <% end %>
+    <br>
+    <% end %>
+  </div>
+
 </div>
