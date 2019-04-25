@@ -1,6 +1,5 @@
 <div class="col-8">
 
-
   <h1><%= @band.name %></h1>
 
   <%= image_tag @band.image, :alt => @band.name, :class => 'rounded mx-auto d-block img-thumbnail img-responsive' %>
@@ -22,8 +21,6 @@
       <% end %>
     </li>
 
-
-
     <li>
       <h4>Albums available on Spotify:</h4>
       <% @artist.albums(album_type: 'album', market: 'US').each do |album| %>
@@ -33,8 +30,6 @@
       </ol>
       <% end %>
     </li>
-
-
 
     <li>
       <h4>Genres:</h4>
@@ -58,7 +53,6 @@
     </div>
 
   </ul>
-
 
   <div class="controls">
     <%= link_to "Edit Band", edit_band_path(@band) %>
