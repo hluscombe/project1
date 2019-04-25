@@ -1,9 +1,24 @@
 <%= form_for @band do |f| %>
+
+  <div class="form-group">
   <%= f.label :name %>
-  <%= f.text_field :name, :autofocus => true, :required => true %>
+  <%= f.text_field :name, :autofocus => true, :required => true, :class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
   <%= f.label :year_formed, "Year Formed" %>
-  <%= f.text_field :year_formed %>
+  <%= f.text_field :year_formed, :class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
   <%= f.label :image, "Band Photo" %>
-  <%= f.url_field :image %>
+  <%= f.url_field :image, :class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+  <%= f.label :synth_ids, "Synth Used" %>
+  <%= f.select :synth_ids, Synth.pluck(:name, :id), :include_blank => true %>
+  </div>
+
   <%= f.submit %>
 <% end %>

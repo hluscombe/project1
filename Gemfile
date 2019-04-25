@@ -24,8 +24,14 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-# Discogs api wrapper
-gem "discogs-wrapper"
+# Spotify api wrappper
+gem 'rspotify'
+# bootstrap ruby
+gem 'bootstrap', '~> 4.3.1'
+# jquery rails
+gem 'jquery-rails'
+
+gem 'cloudinary'
 
 gem 'rails_12factor', group: :production
 

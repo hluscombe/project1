@@ -11,5 +11,5 @@
 #
 
 class Band < ApplicationRecord
-  has_and_belongs_to_many :synths
+  has_and_belongs_to_many :synths, join_table: "bands_synths"
 end

@@ -1,11 +1,8 @@
-<h1>Welcome to Sine. Sign Up</h1>
-<% if @user.errors.any? %>
-  <ol>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ol>
-<% end %>
+<h1>Welcome to Sine.</h1>
+<h1>Sign Up Here</h1>
+
+<%= session[:error] %>
+
 <%= form_for @user do |f| %>
   <div class="form-group">
     <%= f.label :email %>

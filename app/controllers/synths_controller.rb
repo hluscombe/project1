@@ -4,6 +4,7 @@ class SynthsController < ApplicationController
   end
   def show
     @synth = Synth.find params[:id]
+    @designer = Designer.find @synth.designer_id
   end
   def new
     @synth = Synth.new
@@ -27,6 +28,6 @@ class SynthsController < ApplicationController
   end
   private
   def synth_params
-    params.require(:synth).permit(:name, :voices, :image)
+    params.require(:synth).permit(:name, :voices, :image, :designer_id, :band_ids)
   end
 end

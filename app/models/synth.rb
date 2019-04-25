@@ -13,5 +13,5 @@
 
 class Synth < ApplicationRecord
   belongs_to :designer, :optional => true
-  has_and_belongs_to_many :bands
+  has_and_belongs_to_many :bands, join_table: "bands_synths"
 end

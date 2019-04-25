@@ -1,4 +1,9 @@
-<h1>Sine</h1>
+
 <% if @current_user.present? %>
   <h2>Welcome back <%= @current_user.email %></h2>
+<% else %>
+  <%= render :partial => 'form' %>
+  <br>
+  Already have an account?
+  <%= link_to 'Sign in here', login_path %>
 <% end %>

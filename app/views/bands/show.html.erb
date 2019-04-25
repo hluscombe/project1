@@ -1,23 +1,44 @@
 <h1><%= @band.name %></h1>
 
-<%= image_tag @band.image, :alt => @band.name, :class => 'feature' %>
+<%= image_tag @band.image, :alt => @band.name, :class => 'rounded mx-auto d-block' %>
 
 <ul>
   <li>
-    Name: <%= link_to @band.name, band_path(band.id) %>
+    <h4>Name:</h4> <%= link_to @band.name, band_path(@band.id) %>
   </li>
   <li>
-    Year Formed: <%= @band.year_formed %>
+    <h4>Year Formed:</h4> <%= @band.year_formed %>
   </li>
   <li>
-    Albums available on discogs: <%=  %>
+    <h4>Top Tracks:</h4>
+    <% @artist.top_tracks(:AU).each do |track| %>
+    <ol><%= track.name %></ol>
+    <% end %>
   </li>
-
+  <li>
+    <h4>Albums available on Spotify:</h4>
+    <% @artist.albums(album_type: 'album').each do |album| %>
+    <p><%= album.name %></p>
+    <ol>
+      Released: <%= album.release_date %>
+    </ol>
+    <% end %>
+  </li>
+  <li>
+    <h4>Genres:</h4>
+    <% @artist.genres.each do |genre| %>
+    <ol><%= genre.capitalize %></ol>
+    <% end %>
+  </li>
+  <li>
+    <h4>Synths Used</h4>
+    <% @band.synths.each do |synth| %>
+    <%= synth.name %>
+    <%= link_to image_tag(synth.image, :class => 'img-thumbnail'), synth %>
+    <% end %>
+  </li>
 </ul>
 
-<%# <% @band.synths.each do |synth| %> %>
-  <%# <%= link_to image_tag(synth.image, :class => 'thumb'), synth %> %>
-<%# <% end %> %>
 
 <div class="controls">
   <%= link_to "Edit Band", edit_band_path(@band) %>

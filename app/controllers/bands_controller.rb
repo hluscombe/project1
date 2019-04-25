@@ -1,9 +1,14 @@
 class BandsController < ApplicationController
+  require 'rspotify'
+  before_action :authenticate
+
   def index
     @bands = Band.all
   end
   def show
     @band = Band.find params[:id]
+    artists = RSpotify::Artist.search("#{@band.name}", limit: 1, market: 'AU')
+    @artist = artists.first
   end
   def new
     @band = Band.new
@@ -26,7 +31,10 @@ class BandsController < ApplicationController
     redirect_to bands_path
   end
   private
+  def authenticate
+    RSpotify::authenticate("517599d3dfd54407a8285bec2c65ea68", "fc35556269234c43a9c6451320b9a605")
+  end
   def band_params
-    params.require(:band).permit(:name, :year_formed, :image)
+    params.require(:band).permit(:name, :year_formed, :image, :synth_ids)
   end
 end

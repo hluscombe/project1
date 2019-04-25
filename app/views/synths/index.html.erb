@@ -1,14 +1,11 @@
-<h1>All Synths</h1>
+<h1>Synthesisers</h1>
 
 <% @synths.each do |synth| %>
-  <%= image_tag synth.image, :class => 'thumb' %>
+  <%= image_tag synth.image, :class => 'img-thumbnail' %>
 
   <ul>
     <li>
       Name: <%= link_to synth.name, synth_path(synth.id) %>
-    </li>
-    <li>
-      Voice Count: <%= synth.voices %>
     </li>
 
   </ul>
