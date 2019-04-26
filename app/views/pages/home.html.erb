@@ -6,17 +6,22 @@
     <% if @designer != nil %>
       <%= image_tag @designer.image, :alt => @designer.name, :class => 'img-thumbnail img-fluid' %>
     <% end %>
-  <br>
-  <br>
+
+    <br>
+    <br>
+
     <% if @designer != nil %>
       <%= link_to "Go To Your Profile", designer_path(@designer), :class => 'btn btn-primary' %>
 
       <%= link_to "Edit Your Profile", edit_designer_path(@designer), :class => 'btn btn-primary' %>
     <% end %>
+
   <% if @designer == nil %>
     <%= link_to "Create Your Profile", new_designer_path(@designer), :class => 'btn btn-primary' %>
   <% end %>
+
   <%= link_to "Delete your Account", user_path(@current_user), :method => 'delete', :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-primary'  %>
+
   <% else %>
     <%= render :partial => 'form' %>
     <br>

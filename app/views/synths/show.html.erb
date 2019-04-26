@@ -22,13 +22,14 @@
 
   </ul>
   <% if @synth.bands != [] %>
-  <div>
+  <div class="col-8">
     Bands that have used this synthesiser:
     <ol>
       <% @synth.bands.each do |band| %>
+      <%= band.name %>
       <%= link_to image_tag(band.image, :class => 'img-thumbnail img-responsive'), band %>
       <% end %>
-      <ol>
+    <ol>
   </div>
   <% end %>
 

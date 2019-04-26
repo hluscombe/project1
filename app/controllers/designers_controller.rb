@@ -9,6 +9,7 @@ class DesignersController < ApplicationController
 
   def create
     designer = Designer.create designer_params
+    # these two lines are included to create association between user and the designer creating them
     designer.user_id = @current_user.id
     designer.update designer_params
     redirect_to designer_path(designer.id)
@@ -24,6 +25,7 @@ class DesignersController < ApplicationController
 
   def update
     designer = Designer.find params[:id]
+    # user id excepted here to stop different users or admin from changing user id inadvertantly
     designer.update designer_params.except(:user_id)
     redirect_to designer_path(designer.id)
   end

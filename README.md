@@ -1,24 +1,22 @@
-# README
+#Sine.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sine is a database that allows Synthesiser designers to create a profile and link themselves to synthesisers they have designed. From there anyone can link a synthesiser with a band that has used it, with the ultimate goal of displaying how the synthesiser has been used in recordings and providing more information about the people that have both designed them and used them.
 
-Things you may want to cover:
+[Heroku link](https://sine-project1.herokuapp.com/ "SINE")
 
-* Ruby version
+##Major Features
+Relationships between bands, synths and synth designers
+Band information provided by the Spotify API
 
-* System dependencies
+##Getting Started
 
-* Configuration
+This uses the 2.6.3 version of Ruby
+It was written with Ruby on Rails
 
-* Database creation
+Sine depends on the rspotify gem in order to work properly
+if you download the code, running 'bundle' in terminal should download all necessary gems for Sine to work.
 
-* Database initialization
+Sine uses a postgres database.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##Wishlist of Features
+Enable webscraping to find bio information regarding synthesisers, designers and bands
