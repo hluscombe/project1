@@ -19,19 +19,20 @@
     </li>
     </div>
 
-
-    <div class="col-6">
-      <li>
-        Synthesisers designed by <%= @designer.name %>:
-        <ol>
-          <% @designer.synths.each do |synth| %>
-          <%= synth.name %>
-          <%= link_to image_tag(synth.image, :class => 'img-thumbnail img-fluid'), synth %>
-          <% end %>
-          <br>
-        </ol>
-      </li>
-    </div>
+    <% if @designer.synths != []%>
+      <div class="col-6">
+        <li>
+          Synthesisers designed by <%= @designer.name %>:
+          <ol>
+            <% @designer.synths.each do |synth| %>
+            <%= synth.name %>
+            <%= link_to image_tag(synth.image, :class => 'img-thumbnail img-fluid'), synth %>
+            <% end %>
+            <br>
+          </ol>
+        </li>
+      </div>
+    <% end %>
   </ul>
 
   <div class="controls">

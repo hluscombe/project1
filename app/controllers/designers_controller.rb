@@ -9,6 +9,8 @@ class DesignersController < ApplicationController
 
   def create
     designer = Designer.create designer_params
+    designer.user_id = @current_user.id
+    designer.update designer_params
     redirect_to designer_path(designer.id)
   end
 
@@ -22,7 +24,7 @@ class DesignersController < ApplicationController
 
   def update
     designer = Designer.find params[:id]
-    designer.update designer_params
+    designer.update designer_params.except(:user_id)
     redirect_to designer_path(designer.id)
   end
 

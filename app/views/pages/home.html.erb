@@ -1,20 +1,27 @@
 
 <div class="col-6">
   <% if @current_user.present? %>
-  <h2>Welcome back, <%= @current_user.email %>! </h2>
+  <h2>Welcome, <%= @current_user.email %>! </h2>
 
-  <%= image_tag @designer.image, :alt => @designer.name, :class => 'img-thumbnail img-fluid' %>
+    <% if @designer != nil %>
+      <%= image_tag @designer.image, :alt => @designer.name, :class => 'img-thumbnail img-fluid' %>
+    <% end %>
   <br>
   <br>
-  <%= link_to "Go To Your Profile", designer_path(@designer), :class => 'btn btn-primary' %>
+    <% if @designer != nil %>
+      <%= link_to "Go To Your Profile", designer_path(@designer), :class => 'btn btn-primary' %>
 
-  <%= link_to "Edit Your Profile", edit_designer_path(@designer), :class => 'btn btn-primary' %>
-
+      <%= link_to "Edit Your Profile", edit_designer_path(@designer), :class => 'btn btn-primary' %>
+    <% end %>
+  <% if @designer == nil %>
+    <%= link_to "Create Your Profile", new_designer_path(@designer), :class => 'btn btn-primary' %>
+  <% end %>
+  <%= link_to "Delete your Account", user_path(@current_user), :method => 'delete', :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-primary'  %>
   <% else %>
-  <%= render :partial => 'form' %>
-  <br>
-  Already have an account?
-  <%= link_to 'Sign in here', login_path %>
+    <%= render :partial => 'form' %>
+    <br>
+    Already have an account?
+    <%= link_to 'Sign in here', login_path %>
   <% end %>
 </div>
 <br>
