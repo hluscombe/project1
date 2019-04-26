@@ -34,10 +34,13 @@
       </div>
     <% end %>
   </ul>
-
-  <div class="controls">
-    <%= link_to "Edit Designer", edit_designer_path(@designer), :class => 'btn btn-primary' %>
-    <%= link_to "Delete Designer", designer_path(@designer), :method => 'delete', :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-primary'  %>
-  </div>
+  <% if @current_user != nil  %>
+    <% if @current_user.admin? || @designer.user_id == @current_user.id %>
+    <div class="controls">
+      <%= link_to "Edit Designer", edit_designer_path(@designer), :class => 'btn btn-primary' %>
+      <%= link_to "Delete Designer", designer_path(@designer), :method => 'delete', :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-primary'  %>
+    </div>
+    <% end %>
+  <% end %>
   <br>
 </div>
