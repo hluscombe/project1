@@ -8,15 +8,16 @@ Sine is a database that allows Synthesiser designers to create a profile and lin
 Relationships between bands, synths and synth designers
 Band information provided by the Spotify API
 
+## Technologies Used
+- Ruby 2.6.3
+- Bootstrap
+- Ruby on Rails
+- PostGreSQL
+- rspotify gem
+
 ## Getting Started
-
-This uses the 2.6.3 version of Ruby
-It was written with Ruby on Rails
-
-Sine depends on the rspotify gem in order to work properly
-if you download the code, running 'bundle' in terminal should download all necessary gems for Sine to work.
-
-Sine uses a postgres database.
+Sine depends on the rspotify gem in order to work properly.
+If you download the code, running 'bundle' in terminal should download all necessary gems for Sine to work.
 
 ## Wishlist of Features
 Enable webscraping to find bio information regarding synthesisers, designers and bands
