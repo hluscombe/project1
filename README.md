@@ -5,8 +5,9 @@ Sine is a database that allows Synthesiser designers to create a profile and lin
 [Heroku link](https://sine-project1.herokuapp.com/ "SINE")
 
 ## Major Features
-Relationships between bands, synths and synth designers
-Band information provided by the Spotify API
+Relationships between bands, synths and synth designers.
+
+Band information provided by the Spotify API via the rspotify gem
 
 ## Technologies Used
 - Ruby 2.6.3
